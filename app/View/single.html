@@ -1,0 +1,35 @@
+<section>
+    <article>
+        <header>
+            <h2>{{titulo}}</h2>
+        </header>
+        <p>{{conteudo}}</p>
+        </br>
+        </br>
+        </br>
+
+        <form method="post" action="http://localhost/?pagina=post&metodo=addComent">
+            <spam>Nome:</spam>
+            <input type="text" name="nome">
+            <br>
+            <br>
+            <spam>Mensagem:</spam>
+            <textarea name="msg"></textarea>
+            <br>
+            <br>
+            <input type="hidden" name="id" value="{{id}}">
+            <input type="submit" value="Enviar">
+        </form>
+        <br>
+        <br>
+        {% if comentarios == false %}
+           <p>Nenhum comentario encontrado</p>
+        {% else %}
+           {% for coment in comentarios %}
+              <h2>{{coment.nome}}</h2>
+              <p>{{coment.mensagem}}</p>
+             </br>
+           {% endfor %}
+        {% endif %}   
+    </article>
+</section>
